@@ -4,14 +4,12 @@ import ReactGA from 'react-ga4';
 const Analytics = () => {
     useEffect(() => {
         // 1. Google Analytics Setup
-        const gaId = import.meta.env.VITE_GA_MEASUREMENT_ID;
+        // User provided ID: G-P14YDMV3CN
+        const gaId = import.meta.env.VITE_GA_MEASUREMENT_ID || 'G-P14YDMV3CN';
 
         if (gaId) {
             ReactGA.initialize(gaId);
             ReactGA.send({ hitType: "pageview", page: window.location.pathname });
-            console.log('GA Initialized:', gaId);
-        } else {
-            console.log('Analytics: No GA ID found (VITE_GA_MEASUREMENT_ID)');
         }
 
         // 2. Google Search Console Setup (Meta Tag Injection)
