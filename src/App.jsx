@@ -1,6 +1,5 @@
 import { useState, useEffect } from 'react'
 import Calendar from './components/Calendar'
-import Analytics from './components/Analytics'
 import { HOLIDAYS_2025 } from './domain/holidays';
 
 function App() {
@@ -43,7 +42,6 @@ function App() {
 
   return (
     <div className="container">
-      <Analytics />
       <header style={{ textAlign: 'center', marginBottom: '40px' }}>
         <h1 style={{ fontSize: '2rem', color: 'hsl(var(--color-primary))', marginBottom: '8px' }}>
           Best Wedding Day
