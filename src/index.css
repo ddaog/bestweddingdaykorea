@@ -1,0 +1,79 @@
+/* Global Design System */
+:root {
+  /* Premium Wedding Palette */
+  --color-primary: 38, 45%, 38%; /* Elegant Brown/Goldish */
+  --color-secondary: 35, 30%, 94%; /* Soft Cream */
+  --color-accent: 350, 60%, 88%; /* Soft Pink/Coral for highlights */
+  --color-text-main: 210, 10%, 20%; /* Soft Charcoal */
+  --color-text-light: 210, 5%, 50%; /* Grey */
+  --color-background: 40, 30%, 98%; /* Warm White */
+  --color-white: 0, 0%, 100%;
+  
+  --tier-1: 45, 90%, 60%; /* Gold */
+  --tier-2: 200, 60%, 60%; /* Silver/Blueish */
+  --tier-3: 150, 40%, 60%; /* Green/Okay */
+  --tier-4: 30, 40%, 60%; /* Bronze/Meh */
+  --tier-5: 0, 40%, 60%; /* Bad */
+
+  /* Typography */
+  --font-heading: 'Outfit', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --font-body: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+
+  /* Spacing & Layout */
+  --radius-sm: 8px;
+  --radius-md: 16px;
+  --radius-lg: 24px;
+  --shadow-sm: 0 2px 4px rgba(0,0,0,0.05);
+  --shadow-md: 0 8px 16px rgba(0,0,0,0.08);
+  --shadow-lg: 0 16px 32px rgba(0,0,0,0.1);
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: var(--font-body);
+  background-color: hsl(var(--color-background));
+  color: hsl(var(--color-text-main));
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3, h4 {
+  font-family: var(--font-heading);
+  font-weight: 600;
+  line-height: 1.2;
+}
+
+button {
+  cursor: pointer;
+  border: none;
+  font-family: inherit;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* Utilities */
+.container {
+  max-width: 600px; /* Mobile-first, constrained width for premium feel */
+  margin: 0 auto;
+  padding: 20px;
+  min-height: 100vh;
+  background-color: hsl(var(--color-white));
+  box-shadow: var(--shadow-md);
+}
+
+@media (min-width: 768px) {
+  .container {
+    max-width: 800px;
+    padding: 40px;
+    margin: 40px auto;
+    border-radius: var(--radius-lg);
+  }
+}
