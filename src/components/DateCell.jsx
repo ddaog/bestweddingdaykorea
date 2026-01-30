@@ -26,30 +26,22 @@ const DateCell = ({ date, isCurrentMonth, onSelect, customHolidays }) => {
             }}
             onClick={() => onSelect(tierData)}
         >
-            <span style={{
-                ...styles.dateNumber,
-                color: date.getDay() === 0 ? '#ff5252' : (date.getDay() === 6 ? '#1e88e5' : 'inherit'),
-                opacity: isCurrentMonth ? 1 : 0.3
-            }}>
-                {date.getDate()}
-            </span>
-
-            <div style={styles.badgeContainer}>
+            <div style={styles.topRow}>
+                <span style={{
+                    ...styles.dateNumber,
+                    color: date.getDay() === 0 ? '#ff5252' : (date.getDay() === 6 ? '#1e88e5' : 'inherit'),
+                    opacity: isCurrentMonth ? 1 : 0.3
+                }}>
+                    {date.getDate()}
+                </span>
                 {tierData.specialLabel && (
-                    <span style={{
-                        fontSize: '0.65rem',
-                        color: '#ff5252',
-                        fontWeight: 'bold',
-                        display: 'block',
-                        marginBottom: '2px',
-                        whiteSpace: 'nowrap',
-                        overflow: 'hidden',
-                        textOverflow: 'ellipsis',
-                        maxWidth: '100%'
-                    }}>
+                    <span style={styles.specialLabel}>
                         {tierData.specialLabel}
                     </span>
                 )}
+            </div>
+
+            <div style={styles.badgeContainer}>
                 <span style={{
                     ...styles.tierLabel,
                     color: `hsl(${tierData.colorHSL})`,
