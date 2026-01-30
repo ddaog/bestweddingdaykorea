@@ -58,10 +58,6 @@ function App() {
           <Calendar customHolidays={holidays} />
         )}
       </main>
-      <footer style={{ marginTop: '50px', textAlign: 'center', color: '#888', fontSize: '0.8rem' }}>
-        <p>© 2026 Best Wedding Day. All rights reserved.</p>
-        <p>Deployment Test: v2.0</p>
-      </footer>
     </div>
   )
 }
