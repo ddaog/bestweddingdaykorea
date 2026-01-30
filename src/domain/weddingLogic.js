@@ -138,6 +138,7 @@ export const calculateTier = (date, customHolidays = null) => {
         color,
         reasons,
         dateString,
-        dayOfWeek
+        dayOfWeek,
+        specialLabel: holidayName || (csatDate && dateString >= csatDate && dateString <= csatDate ? '수능' : null)
     };
 };

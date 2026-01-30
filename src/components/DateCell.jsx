@@ -35,6 +35,21 @@ const DateCell = ({ date, isCurrentMonth, onSelect, customHolidays }) => {
             </span>
 
             <div style={styles.badgeContainer}>
+                {tierData.specialLabel && (
+                    <span style={{
+                        fontSize: '0.65rem',
+                        color: '#ff5252',
+                        fontWeight: 'bold',
+                        display: 'block',
+                        marginBottom: '2px',
+                        whiteSpace: 'nowrap',
+                        overflow: 'hidden',
+                        textOverflow: 'ellipsis',
+                        maxWidth: '100%'
+                    }}>
+                        {tierData.specialLabel}
+                    </span>
+                )}
                 <span style={{
                     ...styles.tierLabel,
                     color: `hsl(${tierData.colorHSL})`,
