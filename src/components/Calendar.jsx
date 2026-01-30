@@ -3,7 +3,11 @@ import DateCell from './DateCell';
 import TierDetail from './TierDetail';
 
 const Calendar = ({ customHolidays }) => {
-    const [currentDate, setCurrentDate] = useState(new Date(2025, 0, 1)); // Start Jan 1, 2025
+    // Initialize with current date (default to today's month)
+    const [currentDate, setCurrentDate] = useState(() => {
+        const now = new Date();
+        return new Date(now.getFullYear(), now.getMonth(), 1);
+    });
     const [selectedTier, setSelectedTier] = useState(null);
 
     const year = currentDate.getFullYear();
