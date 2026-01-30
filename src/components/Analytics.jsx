@@ -13,7 +13,8 @@ const Analytics = () => {
         }
 
         // 2. Google Search Console Setup (Meta Tag Injection)
-        const gscCode = import.meta.env.VITE_GOOGLE_SITE_VERIFICATION;
+        // User provided code: SbDCqO5WPYHuoaOc7Ln5Ct_6lyYNHtQz76-xzrlD5TE
+        const gscCode = import.meta.env.VITE_GOOGLE_SITE_VERIFICATION || 'SbDCqO5WPYHuoaOc7Ln5Ct_6lyYNHtQz76-xzrlD5TE';
         if (gscCode) {
             // Check if tag already exists
             if (!document.querySelector('meta[name="google-site-verification"]')) {
