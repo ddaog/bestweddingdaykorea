@@ -56,10 +56,12 @@ const styles = {
     cell: {
         height: '80px', // Fixed height for consistency
         border: '1px solid #f0f0f0',
-        borderRadius: '8px',
-        padding: '6px',
+        borderRadius: '12px',
+        padding: '4px 6px',
         display: 'flex',
         flexDirection: 'column',
+        justifyContent: 'flex-start',
+        alignItems: 'center',
         cursor: 'pointer',
         transition: 'all 0.2s ease',
         backgroundColor: 'white',
@@ -69,22 +71,37 @@ const styles = {
     emptyCell: {
         height: '80px',
     },
+    topRow: {
+        display: 'flex',
+        justifyContent: 'space-between',
+        alignItems: 'baseline',
+        width: '100%',
+        marginBottom: '2px',
+    },
+    specialLabel: {
+        fontSize: '0.6rem',
+        color: '#ff5252',
+        fontWeight: 'bold',
+        marginLeft: '4px',
+        whiteSpace: 'nowrap',
+        overflow: 'hidden',
+        textOverflow: 'ellipsis',
+        maxWidth: '60%',
+    },
     dateNumber: {
-        fontSize: '0.9rem',
+        fontSize: '1rem',
         fontWeight: '600',
-        marginBottom: '4px',
     },
     badgeContainer: {
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'center', // Center content
-        flexDirection: 'column',  // Stack dot and label
         flex: 1,
-        gap: '4px',
+        display: 'flex',
+        flexDirection: 'column',
+        justifyContent: 'center',
+        alignItems: 'center',
+        width: '100%',
     },
     tierLabel: {
-        fontSize: '0.8rem', // Slightly larger
-        fontWeight: '500',
+        fontSize: '0.85rem',
     }
 };
 
