@@ -25,6 +25,16 @@ const Analytics = () => {
                 console.log('GSC Meta Tag Injected');
             }
         }
+
+        // 3. Google AdSense
+        // User provided ID: ca-pub-5891083791167051
+        if (!document.querySelector('script[src*="adsbygoogle.js"]')) {
+            const adScript = document.createElement('script');
+            adScript.src = "https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5891083791167051";
+            adScript.async = true;
+            adScript.crossOrigin = "anonymous";
+            document.head.appendChild(adScript);
+        }
     }, []);
 
     return null; // This component doesn't render anything visual
