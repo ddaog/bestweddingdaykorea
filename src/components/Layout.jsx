@@ -1,7 +1,10 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link, Outlet } from 'react-router-dom';
+import FeedbackModal from './FeedbackModal';
 
 const Layout = () => {
+    const [showFeedback, setShowFeedback] = useState(false);
+
     return (
         <div style={styles.wrapper}>
             <header style={styles.header}>
@@ -29,13 +32,18 @@ const Layout = () => {
                     <p style={styles.disclaimer}>본 서비스는 참고용 정보만을 제공하며, 실제 예식장 사정과는 다를 수 있습니다.</p>
 
                     <button
-                        onClick={() => window.open('mailto:contact@bestweddingdaykorea.vercel.app?subject=Best%20Wedding%20Day%20%ED%94%BC%EB%93%9C%EB%B0%B1')}
+                        onClick={() => setShowFeedback(true)}
                         style={styles.feedbackButton}
                     >
                         ✨ 의견 남기기
                     </button>
                 </div>
             </footer>
+
+            <FeedbackModal
+                isOpen={showFeedback}
+                onClose={() => setShowFeedback(false)}
+            />
         </div>
     );
 };
