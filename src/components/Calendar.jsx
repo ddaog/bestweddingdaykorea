@@ -24,6 +24,11 @@ const Calendar = ({ customHolidays }) => {
     };
 
     const handleNextMonth = () => {
+        // Limit navigation to December 2027
+        if (year === 2027 && month === 11) {
+            window.alert('2027년 이후 데이터는 추후 업데이트 예정입니다.');
+            return;
+        }
         setCurrentDate(new Date(year, month + 1, 1));
     };
 

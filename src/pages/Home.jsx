@@ -8,7 +8,7 @@ const Home = ({ holidays, loading }) => {
         <>
             <section style={{ textAlign: 'center', marginBottom: '40px' }}>
                 <h1 style={{ fontSize: '2rem', color: 'hsl(var(--color-primary))', marginBottom: '15px' }}>
-                    2025~2027년 결혼하기 좋은 날 달력
+                    Best Wedding Day
                 </h1>
                 <p style={{ color: '#555', lineHeight: '1.6', maxWidth: '600px', margin: '0 auto' }}>
                     수능일, 명절, 계절 날씨, 요일별 편의성을 종합적으로 분석하여<br />

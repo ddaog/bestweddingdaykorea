@@ -27,6 +27,13 @@ const Layout = () => {
                     </div>
                     <p style={styles.copyright}>© 2026 Best Wedding Day. All rights reserved.</p>
                     <p style={styles.disclaimer}>본 서비스는 참고용 정보만을 제공하며, 실제 예식장 사정과는 다를 수 있습니다.</p>
+
+                    <button
+                        onClick={() => window.open('mailto:contact@bestweddingdaykorea.vercel.app?subject=Best%20Wedding%20Day%20%ED%94%BC%EB%93%9C%EB%B0%B1')}
+                        style={styles.feedbackButton}
+                    >
+                        ✨ 의견 남기기
+                    </button>
                 </div>
             </footer>
         </div>
@@ -109,6 +116,19 @@ const styles = {
     disclaimer: {
         color: '#bbb',
         fontSize: '0.8rem',
+    },
+    feedbackButton: {
+        marginTop: '20px',
+        padding: '10px 20px',
+        backgroundColor: 'hsl(var(--color-primary))',
+        color: '#fff',
+        borderRadius: '30px',
+        fontSize: '0.9rem',
+        fontWeight: '600',
+        border: 'none',
+        cursor: 'pointer',
+        boxShadow: '0 4px 12px rgba(0,0,0,0.1)',
+        transition: 'transform 0.2s ease, box-shadow 0.2s ease',
     }
 };
 
