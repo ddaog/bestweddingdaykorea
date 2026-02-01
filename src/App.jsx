@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react'
 import Calendar from './components/Calendar'
 import { HOLIDAYS_2025 } from './domain/holidays';
+import GuideSection from './components/GuideSection';
 
 function App() {
   const [holidays, setHolidays] = useState(HOLIDAYS_2025);
@@ -55,7 +56,10 @@ function App() {
         {loading ? (
           <div style={{ padding: '40px', textAlign: 'center' }}>데이터 불러오는 중...</div>
         ) : (
-          <Calendar customHolidays={holidays} />
+          <>
+            <Calendar customHolidays={holidays} />
+            <GuideSection />
+          </>
         )}
       </main>
     </div>
