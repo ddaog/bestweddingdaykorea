@@ -15,7 +15,6 @@ const DateCell = ({ date, isCurrentMonth, onSelect, customHolidays }) => {
     const borderColor = `hsla(${tierData.colorHSL}, 0.5)`;
 
     return (
-    return (
         <div
             className="date-cell"
             style={{
