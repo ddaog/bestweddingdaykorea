@@ -1,7 +1,12 @@
 import { useState, useEffect } from 'react'
-import Calendar from './components/Calendar'
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import Layout from './components/Layout';
+import Home from './pages/Home';
+import WeddingGuide from './pages/WeddingGuide';
+import FAQ from './pages/FAQ';
+import PrivacyPolicy from './pages/PrivacyPolicy';
+import TermsOfUse from './pages/TermsOfUse';
 import { HOLIDAYS_2025 } from './domain/holidays';
-import GuideSection from './components/GuideSection';
 
 function App() {
   const [holidays, setHolidays] = useState(HOLIDAYS_2025);
@@ -42,27 +47,17 @@ function App() {
   }, []);
 
   return (
-    <div className="container">
-      <header style={{ textAlign: 'center', marginBottom: '40px' }}>
-        <h1 style={{ fontSize: '2rem', color: 'hsl(var(--color-primary))', marginBottom: '8px' }}>
-          Best Wedding Day
-        </h1>
-        <p style={{ color: 'hsl(var(--color-text-light))' }}>
-          2025년 ~ 2027년, 완벽한 결혼식 날짜를 찾아드려요
-        </p>
-      </header>
-
-      <main>
-        {loading ? (
-          <div style={{ padding: '40px', textAlign: 'center' }}>데이터 불러오는 중...</div>
-        ) : (
-          <>
-            <Calendar customHolidays={holidays} />
-            <GuideSection />
-          </>
-        )}
-      </main>
-    </div>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Layout />}>
+          <Route index element={<Home holidays={holidays} loading={loading} />} />
+          <Route path="guide" element={<WeddingGuide />} />
+          <Route path="faq" element={<FAQ />} />
+          <Route path="privacy" element={<PrivacyPolicy />} />
+          <Route path="terms" element={<TermsOfUse />} />
+        </Route>
+      </Routes>
+    </BrowserRouter>
   )
 }
 
