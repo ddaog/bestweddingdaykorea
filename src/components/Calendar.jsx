@@ -55,17 +55,17 @@ const Calendar = ({ customHolidays }) => {
                 <button onClick={handleNextMonth} style={styles.navButton}>&gt;</button>
             </div>
 
-            <div style={styles.weekDays}>
-                <div style={{ ...styles.weekDay, color: '#ff5252' }}>일</div>
-                <div style={styles.weekDay}>월</div>
-                <div style={styles.weekDay}>화</div>
-                <div style={styles.weekDay}>수</div>
-                <div style={styles.weekDay}>목</div>
-                <div style={styles.weekDay}>금</div>
-                <div style={{ ...styles.weekDay, color: '#1e88e5' }}>토</div>
+            <div className="week-days">
+                <div style={{ padding: '5px', color: '#ff5252' }}>일</div>
+                <div style={{ padding: '5px' }}>월</div>
+                <div style={{ padding: '5px' }}>화</div>
+                <div style={{ padding: '5px' }}>수</div>
+                <div style={{ padding: '5px' }}>목</div>
+                <div style={{ padding: '5px' }}>금</div>
+                <div style={{ padding: '5px', color: '#1e88e5' }}>토</div>
             </div>
 
-            <div style={styles.grid}>
+            <div className="calendar-grid">
                 {days}
             </div>
 
@@ -97,22 +97,6 @@ const styles = {
         padding: '5px 15px',
         color: 'hsl(var(--color-text-light))',
         fontWeight: 'bold',
-    },
-    weekDays: {
-        display: 'grid',
-        gridTemplateColumns: 'repeat(7, 1fr)',
-        marginBottom: '10px',
-        textAlign: 'center',
-        fontWeight: 'bold',
-        fontSize: '0.9rem',
-    },
-    weekDay: {
-        padding: '5px',
-    },
-    grid: {
-        display: 'grid',
-        gridTemplateColumns: 'repeat(7, 1fr)',
-        gap: '5px',
     },
     dayWrapper: {
         width: '100%',

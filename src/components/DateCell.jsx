@@ -15,9 +15,10 @@ const DateCell = ({ date, isCurrentMonth, onSelect, customHolidays }) => {
     const borderColor = `hsla(${tierData.colorHSL}, 0.5)`;
 
     return (
+    return (
         <div
+            className="date-cell"
             style={{
-                ...styles.cell,
                 backgroundColor: backgroundColor,
                 borderColor: isToday ? 'hsl(var(--color-primary))' : borderColor,
                 boxShadow: tierData.score >= 90 ? '0 4px 12px rgba(255, 215, 0, 0.3)' : 'none',
@@ -26,24 +27,22 @@ const DateCell = ({ date, isCurrentMonth, onSelect, customHolidays }) => {
             }}
             onClick={() => onSelect(tierData)}
         >
-            <div style={styles.topRow}>
-                <span style={{
-                    ...styles.dateNumber,
+            <div className="date-top-row">
+                <span className="date-number" style={{
                     color: date.getDay() === 0 ? '#ff5252' : (date.getDay() === 6 ? '#1e88e5' : 'inherit'),
                     opacity: isCurrentMonth ? 1 : 0.3
                 }}>
                     {date.getDate()}
                 </span>
                 {tierData.specialLabel && (
-                    <span style={styles.specialLabel}>
+                    <span className="special-label">
                         {tierData.specialLabel}
                     </span>
                 )}
             </div>
 
-            <div style={styles.badgeContainer}>
-                <span style={{
-                    ...styles.tierLabel,
+            <div className="tier-badge">
+                <span className="tier-text" style={{
                     color: `hsl(${tierData.colorHSL})`,
                     fontWeight: tierData.score >= 90 ? '800' : '600',
                 }}>{tierData.tier}</span>
@@ -53,55 +52,9 @@ const DateCell = ({ date, isCurrentMonth, onSelect, customHolidays }) => {
 };
 
 const styles = {
-    cell: {
-        height: '80px', // Fixed height for consistency
-        border: '1px solid #f0f0f0',
-        borderRadius: '12px',
-        padding: '4px 6px',
-        display: 'flex',
-        flexDirection: 'column',
-        justifyContent: 'flex-start',
-        alignItems: 'center',
-        cursor: 'pointer',
-        transition: 'all 0.2s ease',
-        backgroundColor: 'white',
-        position: 'relative',
-        overflow: 'hidden',
-    },
     emptyCell: {
-        height: '80px',
-    },
-    topRow: {
-        display: 'flex',
-        justifyContent: 'space-between',
-        alignItems: 'baseline',
-        width: '100%',
-        marginBottom: '2px',
-    },
-    specialLabel: {
-        fontSize: '0.6rem',
-        color: '#ff5252',
-        fontWeight: 'bold',
-        marginLeft: '4px',
-        whiteSpace: 'nowrap',
-        overflow: 'hidden',
-        textOverflow: 'ellipsis',
-        maxWidth: '60%',
-    },
-    dateNumber: {
-        fontSize: '1rem',
-        fontWeight: '600',
-    },
-    badgeContainer: {
-        flex: 1,
-        display: 'flex',
-        flexDirection: 'column',
-        justifyContent: 'center',
-        alignItems: 'center',
-        width: '100%',
-    },
-    tierLabel: {
-        fontSize: '0.85rem',
+        minHeight: '65px',
+        aspectRatio: '4/5',
     }
 };
 
