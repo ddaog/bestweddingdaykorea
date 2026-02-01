@@ -61,13 +61,13 @@ const Calendar = ({ customHolidays }) => {
             </div>
 
             <div className="week-days">
-                <div style={{ padding: '5px', color: '#ff5252' }}>일</div>
-                <div style={{ padding: '5px' }}>월</div>
-                <div style={{ padding: '5px' }}>화</div>
-                <div style={{ padding: '5px' }}>수</div>
-                <div style={{ padding: '5px' }}>목</div>
-                <div style={{ padding: '5px' }}>금</div>
-                <div style={{ padding: '5px', color: '#1e88e5' }}>토</div>
+                <div style={{ color: '#ff5252' }}>일</div>
+                <div>월</div>
+                <div>화</div>
+                <div>수</div>
+                <div>목</div>
+                <div>금</div>
+                <div style={{ color: '#1e88e5' }}>토</div>
             </div>
 
             <div className="calendar-grid">

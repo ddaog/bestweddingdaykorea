@@ -127,6 +127,8 @@ a:hover {
 .week-days {
   display: grid;
   grid-template-columns: repeat(7, 1fr);
+  gap: 8px;
+  /* Match calendar-grid gap */
   text-align: center;
   font-weight: 600;
   font-size: 0.9rem;
@@ -222,7 +224,9 @@ a:hover {
 
 /* Desktop Overrides */
 @media (min-width: 768px) {
-  .calendar-grid {
+
+  .calendar-grid,
+  .week-days {
     gap: 12px;
   }
 
