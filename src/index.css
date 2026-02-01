@@ -132,6 +132,14 @@ a {
   /* Slightly tall rectangle */
   min-height: 65px;
   /* Minimum height for mobile */
+  width: 100%;
+}
+
+.date-cell.empty {
+  background-color: #fafafa;
+  border: 1px dashed #eee;
+  cursor: default;
+  box-shadow: none;
 }
 
 .date-top-row {

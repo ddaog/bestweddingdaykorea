@@ -7,7 +7,7 @@ const DateCell = ({ date, isCurrentMonth, onSelect, customHolidays }) => {
     const isToday = new Date().toDateString() === date.toDateString();
 
     if (!isCurrentMonth) {
-        return <div style={styles.emptyCell}></div>;
+        return <div className="date-cell empty"></div>;
     }
 
     // Using HSL values for dynamic styling
