@@ -161,8 +161,14 @@ a:hover {
 /* Hover Effect: Float */
 .date-cell:hover {
   transform: translateY(-3px) scale(1.02);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+  box-shadow: var(--shadow-hover);
   z-index: 2;
+}
+
+.date-cell.today {
+  border: 2px solid hsl(var(--color-primary));
+  background-color: #fff !important;
+  /* Stand out */
 }
 
 .date-cell.empty {

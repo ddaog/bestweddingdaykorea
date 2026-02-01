@@ -12,17 +12,14 @@ const DateCell = ({ date, isCurrentMonth, onSelect, customHolidays }) => {
 
     // Using HSL values for dynamic styling
     const backgroundColor = `hsla(${tierData.colorHSL}, 0.15)`;
-    const borderColor = `hsla(${tierData.colorHSL}, 0.5)`;
 
     return (
         <div
-            className="date-cell"
+            className={`date-cell ${isToday ? 'today' : ''}`}
             style={{
                 backgroundColor: backgroundColor,
-                borderColor: isToday ? 'hsl(var(--color-primary))' : borderColor,
-                boxShadow: tierData.score >= 90 ? '0 4px 12px rgba(255, 215, 0, 0.3)' : 'none',
-                transform: tierData.score >= 90 ? 'scale(1.02)' : 'none',
-                zIndex: tierData.score >= 90 ? 1 : 0,
+                // Soft glow for high tier instead of hard scale/shadow
+                boxShadow: tierData.score >= 90 ? `0 4px 15px hsla(${tierData.colorHSL}, 0.4)` : 'none',
             }}
             onClick={() => onSelect(tierData)}
         >
