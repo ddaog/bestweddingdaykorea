@@ -13,6 +13,18 @@ const DateCell = ({ date, isCurrentMonth, onSelect, customHolidays }) => {
     // Using HSL values for dynamic styling
     const backgroundColor = `hsla(${tierData.colorHSL}, 0.15)`;
 
+    // Determine text color (Holiday > Sunday > Saturday > Default)
+    // Assuming specialLabel indicating a holiday means we should color it red
+    const isHoliday = !!tierData.specialLabel;
+    const dayOfWeek = date.getDay();
+
+    let dateColor = 'inherit';
+    if (isHoliday || dayOfWeek === 0) {
+        dateColor = '#ff5252'; // Red for Holiday or Sunday
+    } else if (dayOfWeek === 6) {
+        dateColor = '#1e88e5'; // Blue for Saturday
+    }
+
     return (
         <div
             className={`date-cell ${isToday ? 'today' : ''}`}
@@ -25,13 +37,13 @@ const DateCell = ({ date, isCurrentMonth, onSelect, customHolidays }) => {
         >
             <div className="date-top-row">
                 <span className="date-number" style={{
-                    color: date.getDay() === 0 ? '#ff5252' : (date.getDay() === 6 ? '#1e88e5' : 'inherit'),
+                    color: dateColor,
                     opacity: isCurrentMonth ? 1 : 0.3
                 }}>
                     {date.getDate()}
                 </span>
                 {tierData.specialLabel && (
-                    <span className="special-label">
+                    <span className="special-label-text">
                         {tierData.specialLabel}
                     </span>
                 )}

@@ -198,14 +198,19 @@ a:hover {
   color: hsl(var(--color-text-main));
 }
 
-.special-label {
+
+.special-label,
+.special-label-text {
   font-size: 0.65rem;
   font-weight: 600;
-  color: hsl(var(--color-accent));
-  background-color: hsla(350, 60%, 50%, 0.1);
-  padding: 2px 6px;
-  border-radius: 10px;
-  max-width: 50px;
+  color: #ff5252;
+  /* Match holiday red */
+  /* background-color: transparent; Removed pink box */
+  margin-left: 4px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 60px;
 }
 
 .tier-badge {
