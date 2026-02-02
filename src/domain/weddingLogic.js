@@ -1,6 +1,9 @@
 import { HOLIDAYS_2025, MAJOR_HOLIDAY_PERIODS } from './holidays';
+import KoreanLunarCalendar from 'korean-lunar-calendar';
 
-export const calculateTier = (date, customHolidays = null) => {
+const lunarCalendar = new KoreanLunarCalendar();
+
+export const calculateTier = (date, customHolidays = null, considerHandless = false) => {
     const year = date.getFullYear();
     const month = date.getMonth(); // 0-11
     const day = date.getDate();
@@ -9,6 +12,23 @@ export const calculateTier = (date, customHolidays = null) => {
 
     let score = 50; // Base score
     let reasons = [];
+
+    // 0. Handless Day Logic (Optional)
+    let isHandless = false;
+    if (considerHandless) {
+        lunarCalendar.setSolarDate(year, month + 1, day);
+        const { day: lunarDay } = lunarCalendar.getLunarCalendar();
+
+        // Handless days end in 9 or 0 (9, 10, 19, 20, 29, 30)
+        if (lunarDay % 10 === 9 || lunarDay % 10 === 0) {
+            isHandless = true;
+            score += 15; // Bonus
+            reasons.push({ type: 'good', text: '손 없는 날: 악귀가 없는 길일로 이사나 결혼하기 아주 좋은 날입니다.' });
+        } else {
+            score -= 5; // Slight penalty if user cares but it's not Handless
+            // reasons.push({ type: 'neutral', text: '손 있는 날: 평범한 날입니다.' }); // Optional to show
+        }
+    }
 
     // 1. Day of Week Logic
     if (dayOfWeek === 6) { // Saturday
@@ -139,6 +159,7 @@ export const calculateTier = (date, customHolidays = null) => {
         reasons,
         dateString,
         dayOfWeek,
-        specialLabel: holidayName || (csatDate && dateString >= csatDate && dateString <= csatDate ? '수능' : null)
+        specialLabel: holidayName || (csatDate && dateString >= csatDate && dateString <= csatDate ? '수능' : null),
+        isHandless
     };
 };

@@ -1,8 +1,8 @@
 import React, { useMemo } from 'react';
 import { calculateTier } from '../domain/weddingLogic';
 
-const DateCell = ({ date, isCurrentMonth, onSelect, customHolidays }) => {
-    const tierData = useMemo(() => calculateTier(date, customHolidays), [date, customHolidays]);
+const DateCell = ({ date, isCurrentMonth, onSelect, customHolidays, considerHandless }) => {
+    const tierData = useMemo(() => calculateTier(date, customHolidays, considerHandless), [date, customHolidays, considerHandless]);
 
     const isToday = new Date().toDateString() === date.toDateString();
 
@@ -46,6 +46,9 @@ const DateCell = ({ date, isCurrentMonth, onSelect, customHolidays }) => {
                     <span className="special-label-text">
                         {tierData.specialLabel}
                     </span>
+                )}
+                {tierData.isHandless && (
+                    <span className="handless-icon" style={{ fontSize: '0.7rem', marginLeft: '2px' }} title="손 없는 날">👻</span>
                 )}
             </div>
 

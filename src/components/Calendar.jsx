@@ -9,6 +9,7 @@ const Calendar = ({ customHolidays }) => {
         return new Date(now.getFullYear(), now.getMonth(), 1);
     });
     const [selectedTier, setSelectedTier] = useState(null);
+    const [considerHandless, setConsiderHandless] = useState(false);
 
     const year = currentDate.getFullYear();
     const month = currentDate.getMonth();
@@ -47,6 +48,7 @@ const Calendar = ({ customHolidays }) => {
                     isCurrentMonth={true}
                     onSelect={setSelectedTier}
                     customHolidays={customHolidays}
+                    considerHandless={considerHandless}
                 />
             </div>
         );
@@ -72,6 +74,18 @@ const Calendar = ({ customHolidays }) => {
 
             <div className="calendar-grid">
                 {days}
+            </div>
+
+            <div style={{ marginTop: '20px', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+                <label style={styles.toggleLabel}>
+                    <input
+                        type="checkbox"
+                        checked={considerHandless}
+                        onChange={(e) => setConsiderHandless(e.target.checked)}
+                        style={styles.checkbox}
+                    />
+                    <span style={{ marginLeft: '8px' }}>👻 손 없는 날 고려하기</span>
+                </label>
             </div>
 
             {selectedTier && (
@@ -105,6 +119,26 @@ const styles = {
     },
     dayWrapper: {
         width: '100%',
+    },
+    toggleLabel: {
+        display: 'flex',
+        alignItems: 'center',
+        cursor: 'pointer',
+        fontSize: '0.95rem',
+        color: 'hsl(var(--color-primary))',
+        fontWeight: '600',
+        padding: '10px 20px',
+        backgroundColor: '#fff',
+        borderRadius: '25px',
+        boxShadow: '0 4px 12px rgba(0,0,0,0.05)',
+        border: '1px solid #eee',
+        userSelect: 'none',
+    },
+    checkbox: {
+        width: '18px',
+        height: '18px',
+        accentColor: 'hsl(var(--color-primary))',
+        cursor: 'pointer',
     }
 };
 
