@@ -19,6 +19,12 @@ const TierDetail = ({ tierData, onClose }) => {
 
                 <h2 style={styles.date}>{formattedDate}</h2>
 
+                {tierData.specialLabel && (
+                    <div style={styles.holidayLabel}>
+                        {tierData.specialLabel}
+                    </div>
+                )}
+
                 <div style={{ ...styles.badge, backgroundColor: color }}>
                     {tier}
                 </div>
@@ -99,6 +105,13 @@ const styles = {
         boxShadow: '0 4px 10px rgba(0,0,0,0.1)',
         width: '100%',
         textAlign: 'center',
+    },
+    holidayLabel: {
+        textAlign: 'center',
+        color: '#ff5252',
+        fontWeight: 'bold',
+        fontSize: '1.1rem',
+        marginBottom: '10px',
     },
     score: {
         textAlign: 'center',

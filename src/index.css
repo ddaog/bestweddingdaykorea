@@ -201,6 +201,8 @@ a:hover {
 
 .special-label,
 .special-label-text {
+  display: none;
+  /* Hidden on mobile by default */
   font-size: 0.65rem;
   font-weight: 600;
   color: #ff5252;
@@ -246,10 +248,14 @@ a:hover {
     font-size: 1.2rem;
   }
 
-  .special-label {
+  .special-label,
+  .special-label-text {
+    display: inline-block;
+    /* Show on desktop */
     font-size: 0.75rem;
     max-width: 90px;
     padding: 3px 8px;
+    /* Optional: add back padding if desktop needs it, or keep text only */
   }
 
   .tier-text {
