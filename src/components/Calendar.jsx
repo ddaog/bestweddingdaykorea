@@ -44,6 +44,15 @@ const Calendar = ({ customHolidays }) => {
         setCurrentDate(new Date(year, month + 1, 1));
     };
 
+    const handleDateSelect = (tierData) => {
+        sendGAEvent('select_date', {
+            event_category: 'calendar_interaction',
+            event_label: tierData.dateString,
+            value: tierData.score
+        });
+        setSelectedTier(tierData);
+    };
+
     const days = [];
     // Empty slots for days before the 1st
     for (let i = 0; i < firstDay; i++) {
@@ -57,7 +66,7 @@ const Calendar = ({ customHolidays }) => {
                 <DateCell
                     date={date}
                     isCurrentMonth={true}
-                    onSelect={setSelectedTier}
+                    onSelect={handleDateSelect}
                     customHolidays={customHolidays}
                     considerHandless={considerHandless}
                 />
