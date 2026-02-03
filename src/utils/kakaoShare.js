@@ -1,4 +1,4 @@
-const KAKAO_KEY = import.meta.env.VITE_KAKAO_API_KEY || '526d9a156d8e7e365da57f3901f1e05d';
+const KAKAO_KEY = import.meta.env.VITE_KAKAO_API_KEY || '1ae866cc0b7734c6a73439df49bb791f';
 
 export const initKakao = () => {
     if (window.Kakao && !window.Kakao.isInitialized()) {
