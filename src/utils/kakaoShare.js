@@ -4,20 +4,25 @@ export const initKakao = () => {
     if (window.Kakao && !window.Kakao.isInitialized()) {
         try {
             window.Kakao.init(KAKAO_KEY);
+            console.log('Kakao SDK Initialized');
         } catch (error) {
             console.error('Failed to initialize Kakao SDK:', error);
         }
+    } else if (window.Kakao && window.Kakao.isInitialized()) {
+        // Already initialized
+    } else {
+        console.warn('Kakao SDK not loaded yet');
     }
 };
 
 export const shareToKakao = ({ date, tier, score, reasons, color }) => {
-    if (!window.Kakao || !window.Kakao.isInitialized()) {
-        initKakao();
+    if (!window.Kakao) {
+        alert('카카오톡 공유 기능을 불러오지 못했습니다. 잠시 후 다시 시도해주세요.');
+        return;
     }
 
-    if (!window.Kakao) {
-        alert('카카오톡 공유 기능을 불러오지 못했습니다.');
-        return;
+    if (!window.Kakao.isInitialized()) {
+        initKakao();
     }
 
     try {
@@ -34,7 +39,7 @@ export const shareToKakao = ({ date, tier, score, reasons, color }) => {
             },
             buttons: [
                 {
-                    title: '달력 보러가기',
+                    title: '결혼 길일 확인하기',
                     link: {
                         mobileWebUrl: 'https://bestweddingdaykorea.vercel.app',
                         webUrl: 'https://bestweddingdaykorea.vercel.app',
@@ -44,6 +49,6 @@ export const shareToKakao = ({ date, tier, score, reasons, color }) => {
         });
     } catch (error) {
         console.error('Kakao Share Error:', error);
-        alert('카카오톡 공유 중 오류가 발생했습니다. API 키를 확인해주세요.');
+        alert('카카오톡 공유 전송 중 오류가 발생했습니다.');
     }
 };
