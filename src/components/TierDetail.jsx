@@ -1,6 +1,13 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import { shareToKakao, initKakao } from '../utils/kakaoShare';
+import { sendGAEvent } from '../utils/analytics';
 
 const TierDetail = ({ tierData, onClose }) => {
+    // Initialize Kakao SDK on mount if needed
+    useEffect(() => {
+        initKakao();
+    }, []);
+
     if (!tierData) return null;
 
     const { tier, score, color, reasons, dateString, dayOfWeek } = tierData;
@@ -11,6 +18,24 @@ const TierDetail = ({ tierData, onClose }) => {
         month: 'long',
         day: 'numeric',
     }) + ` (${dayNames[dayOfWeek]})`;
+
+    const handleShare = () => {
+        // Track Share Event
+        sendGAEvent('share_date', {
+            event_category: 'social_share',
+            event_label: 'kakao',
+            value: score
+        });
+
+        // Trigger Kakao Share
+        shareToKakao({
+            date: formattedDate,
+            tier,
+            score,
+            reasons,
+            color
+        });
+    };
 
     return (
         <div style={styles.overlay} onClick={onClose}>
@@ -44,6 +69,10 @@ const TierDetail = ({ tierData, onClose }) => {
 
                 {score >= 90 && <p style={styles.summary}>✨ 강력 추천하는 최고의 결혼식 날짜입니다! ✨</p>}
                 {score < 30 && <p style={styles.summary}>⚠️ 하객들을 위해 다른 날짜를 고려해보세요.</p>}
+
+                <button onClick={handleShare} style={styles.shareBtn}>
+                    💬 카카오톡으로 날짜 공유하기
+                </button>
             </div>
         </div>
     );
@@ -139,6 +168,23 @@ const styles = {
         fontWeight: '600',
         color: '#333',
         marginTop: '10px',
+    },
+    shareBtn: {
+        width: '100%',
+        marginTop: '20px',
+        padding: '12px',
+        borderRadius: '12px',
+        border: 'none',
+        backgroundColor: '#FEE500', // Kakao Yellow
+        color: '#191919',
+        fontSize: '1rem',
+        fontWeight: 'bold',
+        cursor: 'pointer',
+        boxShadow: '0 2px 5px rgba(0,0,0,0.1)',
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center',
+        gap: '8px',
     }
 };
 
