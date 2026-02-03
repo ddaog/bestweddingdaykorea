@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Link, Outlet } from 'react-router-dom';
 import FeedbackModal from './FeedbackModal';
+import { sendGAEvent } from '../utils/analytics';
 
 const Layout = () => {
     const [showFeedback, setShowFeedback] = useState(false);
@@ -32,7 +33,13 @@ const Layout = () => {
                     <p style={styles.disclaimer}>본 서비스는 참고용 정보만을 제공하며, 실제 예식장 사정과는 다를 수 있습니다.</p>
 
                     <button
-                        onClick={() => setShowFeedback(true)}
+                        onClick={() => {
+                            setShowFeedback(true);
+                            sendGAEvent('button_click', {
+                                event_category: 'feedback',
+                                event_label: 'open_modal'
+                            });
+                        }}
                         style={styles.feedbackButton}
                     >
                         ✨ 의견 남기기

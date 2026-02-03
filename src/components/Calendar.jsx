@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import DateCell from './DateCell';
 import TierDetail from './TierDetail';
+import { sendGAEvent } from '../utils/analytics';
 
 const Calendar = ({ customHolidays }) => {
     // Initialize with current date (default to today's month)
@@ -21,6 +22,11 @@ const Calendar = ({ customHolidays }) => {
     const firstDay = getFirstDayOfMonth(year, month);
 
     const handlePrevMonth = () => {
+        sendGAEvent('button_click', {
+            event_category: 'calendar_nav',
+            event_label: 'prev_month',
+            value: `${year}-${month}`
+        });
         setCurrentDate(new Date(year, month - 1, 1));
     };
 
@@ -30,6 +36,11 @@ const Calendar = ({ customHolidays }) => {
             window.alert('2027년 이후 데이터는 추후 업데이트 예정입니다.');
             return;
         }
+        sendGAEvent('button_click', {
+            event_category: 'calendar_nav',
+            event_label: 'next_month',
+            value: `${year}-${month + 2}` // +2 because month is 0-indexed and we go next
+        });
         setCurrentDate(new Date(year, month + 1, 1));
     };
 
@@ -81,7 +92,15 @@ const Calendar = ({ customHolidays }) => {
                     <input
                         type="checkbox"
                         checked={considerHandless}
-                        onChange={(e) => setConsiderHandless(e.target.checked)}
+                        onChange={(e) => {
+                            const newValue = e.target.checked;
+                            setConsiderHandless(newValue);
+                            sendGAEvent('button_click', {
+                                event_category: 'feature_toggle',
+                                event_label: 'handless_day',
+                                value: newValue ? 1 : 0
+                            });
+                        }}
                         style={styles.checkbox}
                     />
                     <span style={{ marginLeft: '8px' }}>👻 손 없는 날 고려하기</span>

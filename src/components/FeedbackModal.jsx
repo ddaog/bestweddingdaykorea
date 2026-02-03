@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { sendGAEvent } from '../utils/analytics';
 
 const FeedbackModal = ({ isOpen, onClose }) => {
     const [text, setText] = useState('');
@@ -7,6 +8,11 @@ const FeedbackModal = ({ isOpen, onClose }) => {
 
     const handleSubmit = () => {
         if (!text.trim()) return;
+
+        // Track valid submission
+        sendGAEvent('feedback_submit', {
+            feedback_content: text
+        });
 
         // UI simulation only
         window.alert('소중한 의견 감사합니다! 더 좋은 서비스가 되도록 노력하겠습니다. ✨');
