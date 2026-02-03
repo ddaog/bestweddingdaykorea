@@ -1,4 +1,4 @@
-const KAKAO_KEY = import.meta.env.VITE_KAKAO_API_KEY || 'YOUR_KAKAO_JAVA_SCRIPT_KEY'; // User needs to set this
+const KAKAO_KEY = import.meta.env.VITE_KAKAO_API_KEY || '526d9a156d8e7e365da57f3901f1e05d';
 
 export const initKakao = () => {
     if (window.Kakao && !window.Kakao.isInitialized()) {
