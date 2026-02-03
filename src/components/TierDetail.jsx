@@ -23,7 +23,7 @@ const TierDetail = ({ tierData, onClose }) => {
         // Track Share Event
         sendGAEvent('share_date', {
             event_category: 'social_share',
-            event_label: 'kakao',
+            event_label: dateString, // Changed to dateString (YYYY-MM-DD)
             value: score
         });
 
