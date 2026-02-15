@@ -1,0 +1,281 @@
+/* Global Design System - Organic & Premium */
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&family=Inter:wght@400;500;600&display=swap');
+
+:root {
+  /* Organic Palette */
+  --color-primary: 35, 30%, 35%;
+  /* Earthy Brown */
+  --color-secondary: 40, 20%, 94%;
+  /* Warm Cream Paper */
+  --color-accent: 350, 60%, 88%;
+  /* Soft Blush */
+
+  --color-text-main: 30, 10%, 25%;
+  /* Soft Charcoal (Brownish) */
+  --color-text-light: 30, 5%, 50%;
+  /* Warm Grey */
+  --color-background: 38, 30%, 97%;
+  /* Very Light Cream */
+  --color-white: 40, 30%, 98%;
+  /* Warm White */
+
+  /* Tier Colors - Muted/Natural */
+  --tier-1: 42, 60%, 55%;
+  /* Muted Gold */
+  --tier-2: 200, 30%, 55%;
+  /* Slate Blue */
+  --tier-3: 140, 20%, 50%;
+  /* Sage Green */
+  --tier-4: 25, 30%, 55%;
+  /* Terracotta */
+  --tier-5: 0, 0%, 65%;
+  /* Stone Grey */
+
+  /* Typography */
+  --font-heading: 'Outfit', sans-serif;
+  --font-body: 'Inter', sans-serif;
+
+  /* Organic Shapes */
+  --radius-sm: 12px;
+  --radius-md: 24px;
+  --radius-lg: 32px;
+
+  --shadow-soft: 0 10px 40px -10px rgba(60, 50, 40, 0.08);
+  /* Warm shadow */
+  --shadow-hover: 0 20px 40px -10px rgba(60, 50, 40, 0.12);
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: var(--font-body);
+  background-color: hsl(var(--color-background));
+  color: hsl(var(--color-text-main));
+  line-height: 1.7;
+  -webkit-font-smoothing: antialiased;
+  /* Subtle Background Texture */
+  background-image:
+    radial-gradient(at 10% 10%, hsla(40, 60%, 90%, 0.4) 0px, transparent 50%),
+    radial-gradient(at 90% 90%, hsla(350, 60%, 90%, 0.4) 0px, transparent 50%);
+  background-attachment: fixed;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  font-family: var(--font-heading);
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  color: hsl(var(--color-primary));
+}
+
+button {
+  cursor: pointer;
+  border: none;
+  font-family: inherit;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+  transition: opacity 0.2s ease;
+}
+
+a:hover {
+  opacity: 0.7;
+}
+
+/* Utilities */
+.container {
+  max-width: 600px;
+  margin: 10px auto;
+  padding: 16px;
+  min-height: auto;
+
+  background-color: rgba(255, 255, 255, 0.8);
+  /* Semi-transparent */
+  backdrop-filter: blur(10px);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-soft);
+
+  transition: transform 0.3s ease;
+  border: 1px solid rgba(255, 255, 255, 0.5);
+}
+
+@media (min-width: 768px) {
+  .container {
+    max-width: 860px;
+    padding: 60px;
+    margin: 60px auto;
+  }
+}
+
+/* Calendar Styles - Organic */
+.calendar-grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 4px;
+  /* Breathing room */
+  margin-top: 20px;
+}
+
+.week-days {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 4px;
+  /* Match calendar-grid gap */
+  text-align: center;
+  font-weight: 600;
+  font-size: 0.8rem;
+  margin-bottom: 15px;
+  color: hsl(var(--color-text-light));
+  font-family: var(--font-heading);
+}
+
+/* Date Cell - Pebble Style */
+.date-cell {
+  background-color: #fff;
+  border: none;
+  /* No borders */
+  border-radius: 12px;
+  /* Soft pebble shape */
+  padding: 2px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+  overflow: hidden;
+
+  aspect-ratio: 4/5;
+  /* Remove fixed min-height to prevent width forcing */
+  /* min-height: 70px; */
+  width: 100%;
+}
+
+/* Hover Effect: Float */
+.date-cell:hover {
+  transform: translateY(-3px) scale(1.02);
+  box-shadow: var(--shadow-hover);
+  z-index: 2;
+}
+
+.date-cell.today {
+  border: 2px solid hsl(var(--color-primary));
+  background-color: #fff !important;
+  /* Stand out */
+}
+
+.date-cell.empty {
+  background-color: transparent !important;
+  border: 2px dashed rgba(0, 0, 0, 0.03);
+  box-shadow: none;
+  cursor: default;
+}
+
+.date-top-row {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 100%;
+  align-items: center;
+  margin-bottom: 4px;
+  padding: 0 2px;
+}
+
+.date-number {
+  font-size: 0.95rem;
+  font-weight: 600;
+  font-family: var(--font-heading);
+  color: hsl(var(--color-text-main));
+}
+
+
+.special-label,
+.special-label-text {
+  display: none;
+  /* Hidden on mobile by default */
+  font-size: 0.65rem;
+  font-weight: 600;
+  color: #ff5252;
+  /* Match holiday red */
+  /* background-color: transparent; Removed pink box */
+  margin-left: 4px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 60px;
+}
+
+.handless-icon {
+  animation: float 2s ease-in-out infinite;
+  display: inline-block;
+}
+
+@keyframes float {
+
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-2px);
+  }
+}
+
+.tier-badge {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  flex: 1;
+  width: 100%;
+}
+
+.tier-text {
+  font-size: 0.85rem;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+}
+
+/* Desktop Overrides */
+@media (min-width: 768px) {
+
+  .calendar-grid,
+  .week-days {
+    gap: 12px;
+  }
+
+  .date-cell {
+    border-radius: 22px;
+    padding: 10px;
+    min-height: 110px;
+  }
+
+  .date-number {
+    font-size: 1.2rem;
+  }
+
+  .special-label,
+  .special-label-text {
+    display: inline-block;
+    /* Show on desktop */
+    font-size: 0.75rem;
+    max-width: 90px;
+    padding: 3px 8px;
+    /* Optional: add back padding if desktop needs it, or keep text only */
+  }
+
+  .tier-text {
+    font-size: 1rem;
+  }
+}
