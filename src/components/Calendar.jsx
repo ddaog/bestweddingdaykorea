@@ -116,6 +116,24 @@ const Calendar = ({ customHolidays }) => {
                 </label>
             </div>
 
+            <div style={styles.coupangContainer}>
+                <a
+                    href="https://link.coupang.com/a/dMZWM8"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    onClick={() => sendGAEvent('coupang_click', {
+                        event_category: 'affiliate',
+                        event_label: 'wedding_planner'
+                    })}
+                    style={styles.coupangLink}
+                >
+                    결혼 준비 플래너 구경하기
+                </a>
+                <p style={styles.coupangDisclaimer}>
+                    이 링크는 쿠팡 파트너스 활동의 일환으로, 이에 따른 일정액의 수수료를 제공받습니다.
+                </p>
+            </div>
+
             {selectedTier && (
                 <TierDetail
                     tierData={selectedTier}
@@ -167,6 +185,37 @@ const styles = {
         height: '18px',
         accentColor: 'hsl(var(--color-primary))',
         cursor: 'pointer',
+    },
+    coupangContainer: {
+        marginTop: '30px',
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'center',
+        gap: '10px',
+        padding: '20px',
+        backgroundColor: 'rgba(255, 255, 255, 0.4)',
+        borderRadius: '20px',
+        border: '1px dashed hsla(var(--color-primary), 0.3)',
+    },
+    coupangLink: {
+        display: 'inline-block',
+        padding: '12px 24px',
+        backgroundColor: 'hsl(var(--color-primary))',
+        color: '#fff',
+        borderRadius: '15px',
+        textDecoration: 'none',
+        fontWeight: 'bold',
+        fontSize: '0.95rem',
+        boxShadow: 'var(--shadow-soft)',
+        transition: 'transform 0.2s ease',
+    },
+    coupangDisclaimer: {
+        fontSize: '0.75rem',
+        color: 'hsl(var(--color-text-light))',
+        textAlign: 'center',
+        lineHeight: '1.4',
+        margin: 0,
+        maxWidth: '280px',
     }
 };
 
