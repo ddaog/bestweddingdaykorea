@@ -121,13 +121,13 @@ const Calendar = ({ customHolidays }) => {
                     href="https://link.coupang.com/a/dMZWM8"
                     target="_blank"
                     rel="noopener noreferrer"
-                    onClick={() => sendGAEvent('coupang_click', {
+                    onClick={() => sendGAEvent('coupang_link_click', {
                         event_category: 'affiliate',
                         event_label: 'wedding_planner'
                     })}
                     style={styles.coupangLink}
                 >
-                    결혼 준비 플래너 구경하기
+                    🛍️ 결혼 준비 플래너 구경하기
                 </a>
                 <p style={styles.coupangDisclaimer}>
                     이 링크는 쿠팡 파트너스 활동의 일환으로, 이에 따른 일정액의 수수료를 제공받습니다.
