@@ -1,9 +1,16 @@
 export const sendGAEvent = (eventName, params = {}) => {
     if (typeof window !== 'undefined' && window.gtag) {
-        window.gtag('event', eventName, params);
+        // Enforce global parameter for cross-service tracking
+        const enhancedParams = {
+            ...params,
+            service_name: 'best-wedding-day'
+        };
+
+        window.gtag('event', eventName, enhancedParams);
+
         // Only log in dev mode if needed for debugging
         if (import.meta.env.DEV) {
-            console.log(`[GA Event] ${eventName}`, params);
+            console.log(`[GA Event] ${eventName}`, enhancedParams);
         }
     } else {
         if (import.meta.env.DEV) {

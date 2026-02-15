@@ -27,6 +27,9 @@ const TierDetail = ({ tierData, onClose }) => {
             value: score
         });
 
+        // New Cross-Service Share Event
+        sendGAEvent('share');
+
         // Trigger Kakao Share
         shareToKakao({
             date: formattedDate,
